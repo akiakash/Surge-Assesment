@@ -9,6 +9,8 @@ const nodemailer = require("nodemailer");
 const cookie = require("cookie-parser");
 JWT_SECRET = "akiakash";
 
+var generator = require("generate-password");
+
 router.get("/register", (req, res) => {
   res.render("register");
 });
@@ -25,12 +27,16 @@ var transporter = nodemailer.createTransport({
 });
 
 router.post("/register", async (req, res) => {
+  var Password = generator.generate({
+    length: 10,
+    numbers: true,
+  });
   try {
     const { name, email, password } = req.body;
     const user = new User({
       name,
       email,
-      password,
+      password: Password,
       emailToken: crypto.randomBytes(64).toString("hex"),
       isVerified: false,
     });
@@ -41,12 +47,13 @@ router.post("/register", async (req, res) => {
     //send verification mail
 
     var mailOptions = {
-      from: '"Verify your email"<akiagash12@gmaik.com',
+      from: '"Verify your email"<akiagash12@gmail.com',
       to: user.email,
       subject: "codewithaki - verify your email",
       html: `<h2> ${user.name}! thanks for registering on our site </h2>
     <h4> please verify your mail to continue..</h4>
-    <a href="http://${req.headers.host}/user/verify-email?token=${user.emailToken}">verify your email </a>`,
+    <h5>your temporary password =${Password}</h5>
+    <a href="http://${req.headers.host}/user/verify-email?token=${user.emailToken} ">verify your email </a>`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -82,7 +89,7 @@ router.post("/login", async (req, res) => {
         const token = createToken(findUser.id);
         console.log(token);
         res.cookie("access-token", token);
-        res.status(200).json(findUser);
+        res.status(200).json(match);
       } else {
         console.log("invalid password");
       }
