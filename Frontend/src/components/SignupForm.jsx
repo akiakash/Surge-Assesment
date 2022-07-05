@@ -54,7 +54,7 @@ const SignupForm = ({ setAuth }) => {
       })
       .then((res) => {
         console.log(res);
-        alert("Successfully Registered");
+        alert("Check the Mail for the verification");
       })
       .catch((err) => {
         console.log(err);

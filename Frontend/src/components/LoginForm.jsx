@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link as RouterLink, useLocation, useNavigate } from "react-router-dom";
 import { Form, FormikProvider, useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 
 import {
   Box,
@@ -29,6 +30,27 @@ const animate = {
 };
 
 const LoginForm = ({ setAuth }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const Login = () => {
+    axios
+      .post(`http://localhost:4000/UserManagement/login`, {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        console.log(res.data);
+        window.location = "www.itguys.store";
+        alert("Successfuly logged in");
+        // this.props.history.push("/aboutus");
+        console.log(res.data);
+      })
+      .catch((error) => {
+        alert("Incorrect Username or Password");
+        console.log(error);
+      });
+  };
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -88,9 +110,7 @@ const LoginForm = ({ setAuth }) => {
               autoComplete="username"
               type="email"
               label="Email Address"
-              {...getFieldProps("email")}
-              error={Boolean(touched.email && errors.email)}
-              helperText={touched.email && errors.email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <TextField
@@ -98,9 +118,7 @@ const LoginForm = ({ setAuth }) => {
               autoComplete="current-password"
               type={showPassword ? "text" : "password"}
               label="Password"
-              {...getFieldProps("password")}
-              error={Boolean(touched.password && errors.password)}
-              helperText={touched.password && errors.password}
+              onChange={(e) => setPassword(e.target.value)}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
@@ -156,6 +174,7 @@ const LoginForm = ({ setAuth }) => {
               type="submit"
               variant="contained"
               loading={isSubmitting}
+              onClick={Login}
             >
               {isSubmitting ? "loading..." : "Login"}
             </LoadingButton>
