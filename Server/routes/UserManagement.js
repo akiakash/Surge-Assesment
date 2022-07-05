@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const cookie = require("cookie-parser");
 JWT_SECRET = "akiakash";
-
+const { verifyEmail } = require("../config/JWT");
 var generator = require("generate-password");
 
 router.get("/register", (req, res) => {
@@ -32,11 +32,27 @@ router.post("/register", async (req, res) => {
     numbers: true,
   });
   try {
-    const { name, email, password } = req.body;
-    const user = new User({
-      name,
+    const {
+      id,
+      firstname,
+      lastname,
       email,
+      dateofbirth,
+      mobile,
+      Status,
+      password,
+      accounttype,
+    } = req.body;
+    const user = new User({
+      id,
+      firstname,
+      lastname,
+      email,
+      dateofbirth,
+      mobile,
+      Status,
       password: Password,
+      accounttype,
       emailToken: crypto.randomBytes(64).toString("hex"),
       isVerified: false,
     });
@@ -46,14 +62,17 @@ router.post("/register", async (req, res) => {
     const newUser = await user.save();
     //send verification mail
 
+    console.log("req.headers.host: ", req.headers.host);
+    console.log("user.emailToken : ", user.emailToken);
+
     var mailOptions = {
       from: '"Verify your email"<akiagash12@gmail.com',
       to: user.email,
       subject: "codewithaki - verify your email",
-      html: `<h2> ${user.name}! thanks for registering on our site </h2>
+      html: `<h2> ${user.firstname}! thanks for registering on our site </h2>
     <h4> please verify your mail to continue..</h4>
     <h5>your temporary password =${Password}</h5>
-    <a href="http://${req.headers.host}/user/verify-email?token=${user.emailToken} ">verify your email </a>`,
+    <a href="http://${req.headers.host}/UserManagement/verify-email?token=${user.emailToken} ">verify your email </a>`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -72,6 +91,23 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.get("/verify-email", async (req, res) => {
+  try {
+    const token = req.query.token;
+    const user = await User.findOne({ emailToken: token });
+    if (user) {
+      user.emailToken = null;
+      user.isVerified = true;
+      await user.save();
+      res.redirect("https://sliit.lk/");
+    } else {
+      res.redirect("/user/register");
+      console.log("email is not verified");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+});
 router.get("/login", (req, res) => {
   res.render("login");
 });
@@ -79,7 +115,7 @@ router.get("/login", (req, res) => {
 const createToken = (id) => {
   return jwt.sign({ id }, JWT_SECRET);
 };
-router.post("/login", async (req, res) => {
+router.post("/login", verifyEmail, async (req, res) => {
   try {
     const { email, password } = req.body;
     const findUser = await User.findOne({ email: email });

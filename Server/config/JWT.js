@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const cookie = require("cookie-parser");
+const User = require("../models/User");
 
 JWT_Secret = "kjgaskuhfkuahfkahkf";
 
@@ -18,4 +19,17 @@ const loginrequired = async (req, res, next) => {
   }
 };
 
-module.exports = { loginrequired };
+const verifyEmail = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (user.isVerified) {
+      next();
+    } else {
+      console.log("please check your emai to verify your account");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { loginrequired, verifyEmail };

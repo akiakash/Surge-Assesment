@@ -12,6 +12,9 @@ app.use(cookieparser());
 app.use(express.json());
 
 const UserManagement = require("./routes/UserManagement");
+const NotesManagement = require("./routes/NotesManagement");
+
+app.use("/NotesManagement", NotesManagement);
 
 app.use("/UserManagement", UserManagement);
 
