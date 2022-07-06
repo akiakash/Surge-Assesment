@@ -4,6 +4,10 @@ import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ResetPassword from "../src/pages/ResetPassword";
+import AddNotes from "./pages/Notes/AddNotes";
+import UpdateNotes from "./pages/Notes/UpdateNotes";
+import ViewNotes from "./pages/Notes/ViewNotes";
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -25,6 +29,10 @@ function App() {
             )
           }
         />
+        <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/addnotes" element={<AddNotes />} />
+        <Route path="/updatenotes" element={<UpdateNotes />} />
+        <Route path="/viewnotes" element={<ViewNotes />} />
       </Routes>
     </>
   );

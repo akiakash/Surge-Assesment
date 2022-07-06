@@ -40,7 +40,7 @@ const LoginForm = ({ setAuth }) => {
       })
       .then((res) => {
         console.log(res.data);
-        window.location = "www.itguys.store";
+        window.location = "/resetpassword";
         alert("Successfuly logged in");
         // this.props.history.push("/aboutus");
         console.log(res.data);

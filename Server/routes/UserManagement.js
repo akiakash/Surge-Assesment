@@ -26,6 +26,15 @@ var transporter = nodemailer.createTransport({
   },
 });
 
+// router.get("/", async (req, res) => {
+//   try {
+//     const user = await User.find();
+//     res.json(user);
+//   } catch (err) {
+//     res.json({ message: err });
+//   }
+// });
+
 router.post("/register", async (req, res) => {
   var Password = generator.generate({
     length: 10,
@@ -99,7 +108,7 @@ router.get("/verify-email", async (req, res) => {
       user.emailToken = null;
       user.isVerified = true;
       await user.save();
-      res.redirect("https://sliit.lk/");
+      res.redirect("");
     } else {
       res.redirect("/user/register");
       console.log("email is not verified");
@@ -136,5 +145,21 @@ router.post("/login", verifyEmail, async (req, res) => {
     console.log(err);
   }
 });
+
+// router.patch("/:userId", async (req, res) => {
+//   try {
+//     const updatedUser = await User.updateOne(
+//       { _id: req.params.userId },
+//       {
+//         $set: {
+//           password: req.body.password,
+//         },
+//       }
+//     );
+//     res.json(updatedUser);
+//   } catch (err) {
+//     res.json({ message: err });
+//   }
+// });
 
 module.exports = router;
