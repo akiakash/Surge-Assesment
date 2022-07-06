@@ -8,6 +8,8 @@ import ResetPassword from "../src/pages/ResetPassword";
 import AddNotes from "./pages/Notes/AddNotes";
 import UpdateNotes from "./pages/Notes/UpdateNotes";
 import ViewNotes from "./pages/Notes/ViewNotes";
+import Profile from "./pages/Profile";
+import Userlist from "./pages/Userlist";
 
 function App() {
   const [auth, setAuth] = useState(false);
@@ -33,6 +35,8 @@ function App() {
         <Route path="/addnotes" element={<AddNotes />} />
         <Route path="/updatenotes" element={<UpdateNotes />} />
         <Route path="/viewnotes" element={<ViewNotes />} />
+        <Route path="/updateprofile" element={<Profile />} />
+        <Route path="/userlist" element={<Userlist />} />
       </Routes>
     </>
   );

@@ -8,6 +8,10 @@ import {
   TextField,
   IconButton,
   InputAdornment,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { Icon } from "@iconify/react";
@@ -30,7 +34,7 @@ const SignupForm = ({ setAuth }) => {
   const [id, setId] = useState("");
 
   const [firstname, setFirstName] = useState("");
-
+  const [username, setUsername] = useState("");
   const [lastname, setLastname] = useState("");
 
   const [email, setEmail] = useState("");
@@ -43,17 +47,13 @@ const SignupForm = ({ setAuth }) => {
   const createUser = (e) => {
     axios
       .post(`http://localhost:4000/UserManagement/register`, {
-        id: id,
-        firstname: firstname,
-        lastname: lastname,
+        username: username,
+
         email: email,
-        dateofbirth: dateofbirth,
-        mobile: mobile,
-        Status: Status,
-        accounttype: accounttype,
       })
       .then((res) => {
         console.log(res);
+
         alert("Check the Mail for the verification");
       })
       .catch((err) => {
@@ -83,6 +83,7 @@ const SignupForm = ({ setAuth }) => {
   const formik = useFormik({
     initialValues: {
       id: "",
+      username: "",
       firstName: "",
       lastName: "",
       email: "",
@@ -116,29 +117,29 @@ const SignupForm = ({ setAuth }) => {
           >
             <TextField
               fullWidth
-              label="Id"
-              {...getFieldProps("Id")}
+              label="Username"
+              {...getFieldProps("username")}
               // error={Boolean(touched.firstName && errors.firstName)}
               // helperText={touched.firstName && errors.firstName}
-              onChange={(e) => setId(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
-            <TextField
+            {/* <TextField
               fullWidth
               label="First name"
               // {...getFieldProps("firstName")}
               onChange={(e) => setFirstName(e.target.value)}
               // error={Boolean(touched.firstName && errors.firstName)}
               // helperText={touched.firstName && errors.firstName}
-            />
+            /> */}
 
-            <TextField
+            {/* <TextField
               fullWidth
               label="Last name"
               // {...getFieldProps("lastName")}
               onChange={(e) => setLastname(e.target.value)}
               // error={Boolean(touched.lastName && errors.lastName)}
               // helperText={touched.lastName && errors.lastName}
-            />
+            /> */}
           </Stack>
 
           <Stack
@@ -149,7 +150,7 @@ const SignupForm = ({ setAuth }) => {
           >
             <TextField
               fullWidth
-              autoComplete="username"
+              autoComplete="email"
               type="email"
               label="Email address"
               // {...getFieldProps("email")}
@@ -157,30 +158,30 @@ const SignupForm = ({ setAuth }) => {
               // error={Boolean(touched.email && errors.email)}
               // helperText={touched.email && errors.email}
             />
-            <TextField
+            {/* <TextField
               fullWidth
               label="Date of Birth"
               {...getFieldProps("Date oF Birth")}
               onChange={(e) => setDateofbirth(e.target.value)}
               // error={Boolean(touched.lastName && errors.lastName)}
               // helperText={touched.lastName && errors.lastName}
-            />
-            <TextField
+            /> */}
+            {/* <TextField
               fullWidth
               label="Mobile"
               {...getFieldProps("Mobile")}
               onChange={(e) => setMobile(e.target.value)}
               // error={Boolean(touched.lastName && errors.lastName)}
               // helperText={touched.lastName && errors.lastName}
-            />
-            <TextField
+            /> */}
+            {/* <TextField
               fullWidth
               label="Status"
               {...getFieldProps("Status")}
               onChange={(e) => setStatus(e.target.value)}
               // error={Boolean(touched.lastName && errors.lastName)}
               // helperText={touched.lastName && errors.lastName}
-            />
+            /> */}
 
             {/* <TextField
               fullWidth
@@ -208,14 +209,29 @@ const SignupForm = ({ setAuth }) => {
               helperText={touched.password && errors.password}
             /> */}
 
-            <TextField
+            {/* <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">
+                Account Type
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Age"
+                onChange={(e) => setAccounttype(e.target.value)}
+              >
+                <MenuItem value={"Admin"}>Admin</MenuItem>
+                <MenuItem value={"Student"}>Student</MenuItem>
+              </Select>
+            </FormControl> */}
+
+            {/* <TextField
               fullWidth
               label="Account Type"
               onChange={(e) => setAccounttype(e.target.value)}
 
               // error={Boolean(touched.lastName && errors.lastName)}
               // helperText={touched.lastName && errors.lastName}
-            />
+            /> */}
           </Stack>
 
           <Box

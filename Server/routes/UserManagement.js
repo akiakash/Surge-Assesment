@@ -43,6 +43,7 @@ router.post("/register", async (req, res) => {
   try {
     const {
       id,
+      username,
       firstname,
       lastname,
       email,
@@ -54,6 +55,7 @@ router.post("/register", async (req, res) => {
     } = req.body;
     const user = new User({
       id,
+      username,
       firstname,
       lastname,
       email,
@@ -64,6 +66,7 @@ router.post("/register", async (req, res) => {
       accounttype,
       emailToken: crypto.randomBytes(64).toString("hex"),
       isVerified: false,
+      isExistinguser: false,
     });
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(user.password, salt);
@@ -108,9 +111,9 @@ router.get("/verify-email", async (req, res) => {
       user.emailToken = null;
       user.isVerified = true;
       await user.save();
-      res.redirect("");
+      res.redirect("http://localhost:3000/login");
+      console.log("email is  verified");
     } else {
-      res.redirect("/user/register");
       console.log("email is not verified");
     }
   } catch (err) {
@@ -134,7 +137,7 @@ router.post("/login", verifyEmail, async (req, res) => {
         const token = createToken(findUser.id);
         console.log(token);
         res.cookie("access-token", token);
-        res.status(200).json(match);
+        res.status(200).json(findUser);
       } else {
         console.log("invalid password");
       }
@@ -146,20 +149,31 @@ router.post("/login", verifyEmail, async (req, res) => {
   }
 });
 
-// router.patch("/:userId", async (req, res) => {
-//   try {
-//     const updatedUser = await User.updateOne(
-//       { _id: req.params.userId },
-//       {
-//         $set: {
-//           password: req.body.password,
-//         },
-//       }
-//     );
-//     res.json(updatedUser);
-//   } catch (err) {
-//     res.json({ message: err });
-//   }
-// });
+router.patch("/:userId", async (req, res) => {
+  try {
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(req.body.password, salt);
+
+    const updatedUser = await User.updateOne(
+      { _id: req.params.userId },
+      {
+        $set: {
+          id: req.body.id,
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          dateofbirth: req.body.dateofbirth,
+          mobile: req.body.mobile,
+          status: req.body.status,
+          password: hashPassword,
+          isExistinguser: true,
+          accounttype: req.body.accounttype,
+        },
+      }
+    );
+    res.json(updatedUser);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 
 module.exports = router;

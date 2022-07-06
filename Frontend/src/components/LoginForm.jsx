@@ -32,7 +32,7 @@ const animate = {
 const LoginForm = ({ setAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const Login = () => {
+  const Login = (_id) => {
     axios
       .post(`http://localhost:4000/UserManagement/login`, {
         email: email,
@@ -40,10 +40,16 @@ const LoginForm = ({ setAuth }) => {
       })
       .then((res) => {
         console.log(res.data);
-        window.location = "/resetpassword";
+        if (res.data.isExistinguser === false) {
+          window.location = "/updateprofile";
+        } else {
+          window.location = "/userlist";
+        }
+
         alert("Successfuly logged in");
         // this.props.history.push("/aboutus");
-        console.log(res.data);
+        console.log(res.data._id);
+        window.sessionStorage.setItem("userID", res.data._id);
       })
       .catch((error) => {
         alert("Incorrect Username or Password");

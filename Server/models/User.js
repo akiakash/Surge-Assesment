@@ -3,15 +3,19 @@ const mongoose = require("mongoose");
 const userSchema = new mongoose.Schema({
   id: {
     type: Number,
+    required: false,
+  },
+  username: {
+    type: String,
     required: true,
   },
   firstname: {
     type: String,
-    required: true,
+    required: false,
   },
   lastname: {
     type: String,
-    required: true,
+    required: false,
   },
   email: {
     type: String,
@@ -20,11 +24,11 @@ const userSchema = new mongoose.Schema({
   },
   dateofbirth: {
     type: Date,
-    required: true,
+    required: false,
   },
   mobile: {
     type: Number,
-    required: true,
+    required: false,
   },
   Status: {
     type: Boolean,
@@ -36,12 +40,15 @@ const userSchema = new mongoose.Schema({
   },
   accounttype: {
     type: String,
-    required: true,
+    required: false,
   },
   emailToken: {
     type: String,
   },
   isVerified: {
+    type: Boolean,
+  },
+  isExistinguser: {
     type: Boolean,
   },
   date: {
