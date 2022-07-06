@@ -33,19 +33,25 @@ export default function ValidationTextFields() {
       noValidate
       autoComplete="off"
     >
-      <div>
-        <TextField label="Title" onChange={(e) => setTitle(e.target.value)} />
-        <TextField
-          label="Description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
+      <div style={{ marginTop: "10%" }}>
+        <center>
+          <TextField label="Title" onChange={(e) => setTitle(e.target.value)} />
+          <TextField
+            label="Description"
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </center>
       </div>
-      <Button variant="contained" onClick={addnotes}>
-        Save
-      </Button>
-      <a href="/viewnotes">
-        <Button variant="contained">ViewNotes</Button>
-      </a>
+      <center>
+        <Button variant="contained" onClick={addnotes}>
+          Save
+        </Button>
+        <a href="/viewnotes">
+          <Button variant="contained" style={{ marginLeft: "10px" }}>
+            ViewNotes
+          </Button>
+        </a>
+      </center>
     </Box>
   );
 }

@@ -42,10 +42,13 @@ const LoginForm = ({ setAuth }) => {
         console.log(res.data);
         if (res.data.isExistinguser === false) {
           window.location = "/updateprofile";
-        } else {
+        } else if (res.data.accounttype === "Admin") {
           window.location = "/userlist";
+        } else if (res.data.accounttype === "Student") {
+          window.location = "/addnotes";
+        } else {
+          alert("something error");
         }
-
         alert("Successfuly logged in");
         // this.props.history.push("/aboutus");
         console.log(res.data._id);

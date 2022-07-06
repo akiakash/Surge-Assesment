@@ -9,7 +9,7 @@ export default function ValidationTextFields() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [notes, setNotes] = useState("");
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     axios
@@ -31,7 +31,7 @@ export default function ValidationTextFields() {
         description: description,
       })
       .then((response) => {
-        window.location.reload();
+        window.location = "/viewnotes";
         alert("successfull updated");
       })
       .catch((error) => {
@@ -48,21 +48,36 @@ export default function ValidationTextFields() {
       noValidate
       autoComplete="off"
     >
-      <div>
-        <input
-          label="Title"
-          onChange={(e) => setTitle(e.target.value)}
-          defaultValue={notes.title}
-        />
-        <input
-          label="Description"
-          onChange={(e) => setDescription(e.target.value)}
-          defaultValue={notes.description}
-        />
+      <div style={{ marginTop: "10%" }}>
+        <center>
+          <input
+            label="Title"
+            onChange={(e) => setTitle(e.target.value)}
+            defaultValue={notes.title}
+            style={{
+              borderRadius: "5px",
+              width: "200px",
+              height: "40px",
+              marginRight: "10px",
+            }}
+          />
+          <input
+            label="Description"
+            onChange={(e) => setDescription(e.target.value)}
+            defaultValue={notes.description}
+            style={{ borderRadius: "5px", width: "200px", height: "40px" }}
+          />
+        </center>
       </div>
-      <Button variant="contained" onClick={updateNotes}>
-        Update
-      </Button>
+      <center>
+        <Button
+          variant="contained"
+          onClick={updateNotes}
+          style={{ marginTop: "10px" }}
+        >
+          Update
+        </Button>
+      </center>
     </Box>
   );
 }

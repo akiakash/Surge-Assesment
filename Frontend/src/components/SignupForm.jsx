@@ -118,7 +118,6 @@ const SignupForm = ({ setAuth }) => {
             <TextField
               fullWidth
               label="Username"
-              {...getFieldProps("username")}
               // error={Boolean(touched.firstName && errors.firstName)}
               // helperText={touched.firstName && errors.firstName}
               onChange={(e) => setUsername(e.target.value)}

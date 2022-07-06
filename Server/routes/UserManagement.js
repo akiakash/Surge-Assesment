@@ -26,14 +26,14 @@ var transporter = nodemailer.createTransport({
   },
 });
 
-// router.get("/", async (req, res) => {
-//   try {
-//     const user = await User.find();
-//     res.json(user);
-//   } catch (err) {
-//     res.json({ message: err });
-//   }
-// });
+router.get("/", async (req, res) => {
+  try {
+    const user = await User.find();
+    res.json(user);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 
 router.post("/register", async (req, res) => {
   var Password = generator.generate({

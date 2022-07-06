@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import axios from "axios";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 export default function ValidationTextFields() {
   const id = window.sessionStorage.getItem("userID");
@@ -30,11 +31,14 @@ export default function ValidationTextFields() {
         accounttype: accounttype,
       })
       .then((response) => {
-        window.location.reload();
+        window.location = "/login";
+        localStorage.clear();
+        console.log(response);
 
         alert("successfull updated");
       })
       .catch((error) => {
+        console.log(error);
         alert("Sorry, Something Error...");
       });
   }
@@ -47,7 +51,7 @@ export default function ValidationTextFields() {
       noValidate
       autoComplete="off"
     >
-      <div>
+      <div style={{ marginLeft: "15%", marginRight: "15%", marginTop: "10%" }}>
         <TextField label="ID" onChange={(e) => setID(e.target.value)} />
         <TextField
           label="First Name"
@@ -57,7 +61,6 @@ export default function ValidationTextFields() {
           label="LastName "
           onChange={(e) => setLastname(e.target.value)}
         />
-
         <TextField
           label="Date OF Birth "
           onChange={(e) => setDateofbirth(e.target.value)}
@@ -70,20 +73,29 @@ export default function ValidationTextFields() {
           label="Status "
           onChange={(e) => setStatus(e.target.value)}
         />
-        <TextField
-          label="Account Type "
-          onChange={(e) => setAccounttype(e.target.value)}
-        />
+
         <TextField
           label="New Password "
           onChange={(e) => setPassword(e.target.value)}
         />
         <TextField label="Re-enter New Password " />
+        <FormControl style={{ width: "225px", marginLeft: "6px" }}>
+          <InputLabel id="demo-simple-select-label">Account Type</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            onChange={(e) => setAccounttype(e.target.value)}
+          >
+            <MenuItem value={"Admin"}>Admin</MenuItem>
+            <MenuItem value={"Student"}>Student</MenuItem>
+          </Select>
+        </FormControl>
       </div>
-
-      <Button variant="contained" onClick={updateProfile}>
-        Update
-      </Button>
+      <center>
+        <Button variant="contained" onClick={updateProfile}>
+          Update
+        </Button>
+      </center>
     </Box>
   );
 }
