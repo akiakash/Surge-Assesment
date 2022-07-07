@@ -26,7 +26,7 @@ password - @Akiakash1
 
 #in this signup page admin will type the username ,  email and the account type to register ,after signup it will send a login link with verifying the mail and the temporary password
 
-#verifu email sample
+#verify email sample
 ![verifyemail](https://user-images.githubusercontent.com/61785637/177681868-61a3803e-59a8-4b39-88a3-4bab07c2ef15.png)
 
 
@@ -57,9 +57,9 @@ system it will redirect based on your account type.
 in this page you can see the all user list and you can search them using their username
 
 ******if the accounttype is Student *******
-
-![addnotes page](https://user-images.githubusercontent.com/61785637/177676903-97c500a2-fabd-480d-9688-c928b7422e48.png)
  in this page student can add the title and description
+![addnotes page](https://user-images.githubusercontent.com/61785637/177676903-97c500a2-fabd-480d-9688-c928b7422e48.png)
+
  
  after adding the the title and the description student can view the noteslist
  
