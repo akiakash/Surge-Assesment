@@ -60,35 +60,7 @@ const Signup = ({ setAuth }) => {
             </Typography>
           </HeadingStyle>
 
-          <Box component={motion.div} {...fadeInUp}>
-            <SocialAuth />
-          </Box>
-
-          <Divider sx={{ my: 3 }} component={motion.div} {...fadeInUp}>
-            <Typography variant="body2" sx={{ color: "text.secondary" }}>
-              OR
-            </Typography>
-          </Divider>
-
           <SignupForm setAuth={setAuth} />
-
-          <Typography
-            component={motion.p}
-            {...fadeInUp}
-            variant="body2"
-            align="center"
-            sx={{ color: "text.secondary", mt: 2 }}
-          >
-            By registering, I agree to{" "}
-            <Link underline="always" color="text.primary" href="#">
-              Terms of Service
-            </Link>{" "}
-            &{" "}
-            <Link underline="always" color="text.primary" href="#">
-              Privacy Policy
-            </Link>
-            .
-          </Typography>
 
           <Typography
             component={motion.p}

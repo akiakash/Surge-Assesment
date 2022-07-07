@@ -50,13 +50,12 @@ const LoginForm = ({ setAuth }) => {
           alert("something error");
         }
         alert("Successfuly logged in");
-        // this.props.history.push("/aboutus");
         console.log(res.data._id);
         window.sessionStorage.setItem("userID", res.data._id);
       })
-      .catch((error) => {
+      .catch((err) => {
         alert("Incorrect Username or Password");
-        console.log(error);
+        console.log(err);
       });
   };
 

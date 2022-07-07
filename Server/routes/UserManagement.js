@@ -15,6 +15,7 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
+//the email sending method and the from mail
 var transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -26,6 +27,7 @@ var transporter = nodemailer.createTransport({
   },
 });
 
+//filter the all registered datas from the database
 router.get("/", async (req, res) => {
   try {
     const user = await User.find();
@@ -35,6 +37,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//register method for the users
 router.post("/register", async (req, res) => {
   var Password = generator.generate({
     length: 10,
@@ -53,6 +56,7 @@ router.post("/register", async (req, res) => {
       password,
       accounttype,
     } = req.body;
+
     const user = new User({
       id,
       username,
@@ -61,13 +65,14 @@ router.post("/register", async (req, res) => {
       email,
       dateofbirth,
       mobile,
-      Status,
+      Status: false,
       password: Password,
       accounttype,
       emailToken: crypto.randomBytes(64).toString("hex"),
       isVerified: false,
       isExistinguser: false,
     });
+
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(user.password, salt);
     user.password = hashPassword;
@@ -103,6 +108,8 @@ router.post("/register", async (req, res) => {
   }
 });
 
+//mail verification after clicking the link
+
 router.get("/verify-email", async (req, res) => {
   try {
     const token = req.query.token;
@@ -127,6 +134,8 @@ router.get("/login", (req, res) => {
 const createToken = (id) => {
   return jwt.sign({ id }, JWT_SECRET);
 };
+
+//login method for the users
 router.post("/login", verifyEmail, async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -149,6 +158,7 @@ router.post("/login", verifyEmail, async (req, res) => {
   }
 });
 
+//updating the details about users
 router.patch("/:userId", async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(10);

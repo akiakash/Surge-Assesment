@@ -78,6 +78,13 @@ export default function ValidationTextFields() {
           Update
         </Button>
       </center>
+      <center>
+        <a href="/viewnotes">
+          <Button variant="contained" style={{ marginTop: "10px" }}>
+            View Notes
+          </Button>
+        </a>
+      </center>
     </Box>
   );
 }

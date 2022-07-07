@@ -69,10 +69,10 @@ export default function ValidationTextFields() {
           label="Mobile "
           onChange={(e) => setMobile(e.target.value)}
         />
-        <TextField
+        {/* <TextField
           label="Status "
           onChange={(e) => setStatus(e.target.value)}
-        />
+        /> */}
 
         <TextField
           label="New Password "

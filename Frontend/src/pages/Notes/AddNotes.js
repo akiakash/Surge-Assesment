@@ -24,6 +24,10 @@ export default function ValidationTextFields() {
         alert("something error");
       });
   }
+
+  function logout(req) {
+    req.session.destroy();
+  }
   return (
     <Box
       component="form"
@@ -49,6 +53,15 @@ export default function ValidationTextFields() {
         <a href="/viewnotes">
           <Button variant="contained" style={{ marginLeft: "10px" }}>
             ViewNotes
+          </Button>
+        </a>
+        <a href="/login">
+          <Button
+            variant="contained"
+            style={{ marginLeft: "10px" }}
+            onClick={logout}
+          >
+            Logout
           </Button>
         </a>
       </center>

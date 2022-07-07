@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//post data
+//post Notes data
 
 router.post("/", async (req, res) => {
   const notes = new Notes({
@@ -29,7 +29,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-//specific Post
+//specific Notes
 
 router.get("/:notesId", async (req, res) => {
   try {
@@ -40,7 +40,7 @@ router.get("/:notesId", async (req, res) => {
   }
 });
 
-//delete post
+//delete Notes
 
 router.delete("/:notesId", async (req, res) => {
   try {
@@ -53,7 +53,7 @@ router.delete("/:notesId", async (req, res) => {
   }
 });
 
-//update the Post
+//update the NOtes
 
 router.patch("/:notesId", async (req, res) => {
   try {
