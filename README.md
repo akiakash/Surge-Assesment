@@ -1,6 +1,6 @@
 # Surge-Assesment
 
-#Signup page
+
 
 -------------------if you wan to check the system without signup you can use these credentialas--------------------
 For Admin
@@ -19,7 +19,7 @@ password - @Akiakash1
 !kindly apology!
 **if i have one more day i can complete the validations very well**
 
-
+#Signup page
 
 ![signup](https://user-images.githubusercontent.com/61785637/177673500-1da8db9b-a3ce-45fd-8a4c-33a591e3e584.png)
 
