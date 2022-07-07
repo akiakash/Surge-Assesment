@@ -23,12 +23,13 @@ password - @Akiakash1
 
 ![signup](https://user-images.githubusercontent.com/61785637/177673500-1da8db9b-a3ce-45fd-8a4c-33a591e3e584.png)
 
-#in this signup page you must type the username and the email to register ,after signup it will send a login link with verifying the mail and the temporary password
+#in this signup page admin will type the username ,  email and the account type to register ,after signup it will send a login link with verifying the mail and the temporary password
 
 after clicking the link from the email it will redirect to the login page and user must login with the email and temporary password after login to the account the user 
 must fill the below details
 
-![profile update](https://user-images.githubusercontent.com/61785637/177674930-fca211e5-4636-4d80-8b16-5bf2c7512c17.png)
+![signuppage](https://user-images.githubusercontent.com/61785637/177680990-8d2d97b0-4a5a-4b02-b75a-da8af20fafc5.png)
+
 
 
 you must fill this form like this example -->  
@@ -39,7 +40,7 @@ you must fill this form like this example -->
     5.  mobile - 768751665 (its a number type ,dont use 0 in the begining)
     6.  New Password - @Akiakash1 (any password you need )
     7.  Re-enter password - @Akiakash1 (any password you need )
-    8. Account type - select Admin or Student
+  
 
 in this form you have to select the admin or the student account type after completing this form it will redirect again to the login page and it after again login to the 
 system it will redirect based on your account type.
