@@ -50,6 +50,7 @@ const SignupForm = ({ setAuth }) => {
         username: username,
 
         email: email,
+        accounttype: accounttype,
       })
       .then((res) => {
         console.log(res);
@@ -208,7 +209,7 @@ const SignupForm = ({ setAuth }) => {
               helperText={touched.password && errors.password}
             /> */}
 
-            {/* <FormControl fullWidth>
+            <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">
                 Account Type
               </InputLabel>
@@ -221,7 +222,7 @@ const SignupForm = ({ setAuth }) => {
                 <MenuItem value={"Admin"}>Admin</MenuItem>
                 <MenuItem value={"Student"}>Student</MenuItem>
               </Select>
-            </FormControl> */}
+            </FormControl>
 
             {/* <TextField
               fullWidth

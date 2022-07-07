@@ -27,8 +27,6 @@ export default function ValidationTextFields() {
         mobile: mobile,
         status: status,
         password: password,
-
-        accounttype: accounttype,
       })
       .then((response) => {
         window.location = "/login";
@@ -79,7 +77,7 @@ export default function ValidationTextFields() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <TextField label="Re-enter New Password " />
-        <FormControl style={{ width: "225px", marginLeft: "6px" }}>
+        {/* <FormControl style={{ width: "225px", marginLeft: "6px" }}>
           <InputLabel id="demo-simple-select-label">Account Type</InputLabel>
           <Select
             labelId="demo-simple-select-label"
@@ -89,7 +87,7 @@ export default function ValidationTextFields() {
             <MenuItem value={"Admin"}>Admin</MenuItem>
             <MenuItem value={"Student"}>Student</MenuItem>
           </Select>
-        </FormControl>
+        </FormControl> */}
       </div>
       <center>
         <Button variant="contained" onClick={updateProfile}>

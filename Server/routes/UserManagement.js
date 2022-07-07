@@ -86,7 +86,7 @@ router.post("/register", async (req, res) => {
       from: '"Verify your email"<akiagash12@gmail.com',
       to: user.email,
       subject: "codewithaki - verify your email",
-      html: `<h2> ${user.firstname}! thanks for registering on our site </h2>
+      html: `<h2> ${user.username}! thanks for registering on our site </h2>
     <h4> please verify your mail to continue..</h4>
     <h5>your temporary password =${Password}</h5>
     <a href="http://${req.headers.host}/UserManagement/verify-email?token=${user.emailToken} ">verify your email </a>`,

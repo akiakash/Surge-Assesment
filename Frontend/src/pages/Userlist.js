@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import { Button } from "@mui/material";
+
 function Userlist() {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,6 +22,10 @@ function Userlist() {
     getRequest();
   }, [users]);
 
+  function logout(req) {
+    req.session.destroy();
+  }
+
   return (
     <div>
       <input
@@ -33,6 +39,7 @@ function Userlist() {
       <table style={{ border: "40px black ", width: "100%" }}>
         <tr>
           <th style={{ border: "1px solid #dddddd" }}>username</th>
+          <th style={{ border: "1px solid #dddddd" }}>ID</th>
           <th style={{ border: "1px solid #dddddd" }}>firstname</th>
           <th style={{ border: "1px solid #dddddd" }}>lastname</th>
           <th style={{ border: "1px solid #dddddd" }}>email</th>
@@ -59,6 +66,10 @@ function Userlist() {
               </td>
               <td>
                 {" "}
+                <center>{item.id}</center>
+              </td>
+              <td>
+                {" "}
                 <center>{item.firstname}</center>
               </td>
               <td>
@@ -76,6 +87,17 @@ function Userlist() {
             </tr>
           ))}
       </table>
+      <center>
+        <a href="/login">
+          <Button
+            variant="contained"
+            style={{ marginLeft: "10px" }}
+            onClick={logout}
+          >
+            Logout
+          </Button>
+        </a>
+      </center>
     </div>
   );
 }
