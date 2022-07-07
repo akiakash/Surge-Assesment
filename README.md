@@ -26,6 +26,10 @@ password - @Akiakash1
 
 #in this signup page admin will type the username ,  email and the account type to register ,after signup it will send a login link with verifying the mail and the temporary password
 
+#verifu email sample
+![verifyemail](https://user-images.githubusercontent.com/61785637/177681868-61a3803e-59a8-4b39-88a3-4bab07c2ef15.png)
+
+
 after clicking the link from the email it will redirect to the login page and user must login with the email and temporary password after login to the account the user 
 must fill the below details
 ![login](https://user-images.githubusercontent.com/61785637/177681709-32bb84d6-abc8-4149-aca9-be2b7eaeec2f.png)
