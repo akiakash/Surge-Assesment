@@ -28,7 +28,8 @@ password - @Akiakash1
 
 after clicking the link from the email it will redirect to the login page and user must login with the email and temporary password after login to the account the user 
 must fill the below details
-![signup](https://user-images.githubusercontent.com/61785637/177673500-1da8db9b-a3ce-45fd-8a4c-33a591e3e584.png)
+![login](https://user-images.githubusercontent.com/61785637/177681709-32bb84d6-abc8-4149-aca9-be2b7eaeec2f.png)
+
 
 
 
