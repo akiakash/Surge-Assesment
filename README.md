@@ -12,7 +12,7 @@ email- gmad0699@gmail.com
 password - @Akiakash1
 
 ! Kindly Request !
-*****open the project and there will be two folders 1.Server 2.Frontend , you have to run those two files in seperate terminals******
+*****open the project and there will be two folders 1.Server 2.Frontend , you have to run those two files in seperate terminals before run it you have to install the npm module by typing "npm install" ******
 ****** Run the frontend in localhost:3000 *********
 *****dont signup using same email two times *********
 
