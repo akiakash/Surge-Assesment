@@ -21,14 +21,14 @@ password - @Akiakash1
 
 #Signup page
 
-![signup](https://user-images.githubusercontent.com/61785637/177673500-1da8db9b-a3ce-45fd-8a4c-33a591e3e584.png)
+![signuppage](https://user-images.githubusercontent.com/61785637/177680990-8d2d97b0-4a5a-4b02-b75a-da8af20fafc5.png)
+
 
 #in this signup page admin will type the username ,  email and the account type to register ,after signup it will send a login link with verifying the mail and the temporary password
 
 after clicking the link from the email it will redirect to the login page and user must login with the email and temporary password after login to the account the user 
 must fill the below details
-
-![signuppage](https://user-images.githubusercontent.com/61785637/177680990-8d2d97b0-4a5a-4b02-b75a-da8af20fafc5.png)
+![signup](https://user-images.githubusercontent.com/61785637/177673500-1da8db9b-a3ce-45fd-8a4c-33a591e3e584.png)
 
 
 
