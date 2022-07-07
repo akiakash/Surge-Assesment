@@ -67,27 +67,12 @@ export default function ValidationTextFields() {
           label="Mobile "
           onChange={(e) => setMobile(e.target.value)}
         />
-        {/* <TextField
-          label="Status "
-          onChange={(e) => setStatus(e.target.value)}
-        /> */}
 
         <TextField
           label="New Password "
           onChange={(e) => setPassword(e.target.value)}
         />
         <TextField label="Re-enter New Password " />
-        {/* <FormControl style={{ width: "225px", marginLeft: "6px" }}>
-          <InputLabel id="demo-simple-select-label">Account Type</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            onChange={(e) => setAccounttype(e.target.value)}
-          >
-            <MenuItem value={"Admin"}>Admin</MenuItem>
-            <MenuItem value={"Student"}>Student</MenuItem>
-          </Select>
-        </FormControl> */}
       </div>
       <center>
         <Button variant="contained" onClick={updateProfile}>

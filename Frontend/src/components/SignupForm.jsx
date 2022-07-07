@@ -123,23 +123,6 @@ const SignupForm = ({ setAuth }) => {
               // helperText={touched.firstName && errors.firstName}
               onChange={(e) => setUsername(e.target.value)}
             />
-            {/* <TextField
-              fullWidth
-              label="First name"
-              // {...getFieldProps("firstName")}
-              onChange={(e) => setFirstName(e.target.value)}
-              // error={Boolean(touched.firstName && errors.firstName)}
-              // helperText={touched.firstName && errors.firstName}
-            /> */}
-
-            {/* <TextField
-              fullWidth
-              label="Last name"
-              // {...getFieldProps("lastName")}
-              onChange={(e) => setLastname(e.target.value)}
-              // error={Boolean(touched.lastName && errors.lastName)}
-              // helperText={touched.lastName && errors.lastName}
-            /> */}
           </Stack>
 
           <Stack
@@ -223,15 +206,6 @@ const SignupForm = ({ setAuth }) => {
                 <MenuItem value={"Student"}>Student</MenuItem>
               </Select>
             </FormControl>
-
-            {/* <TextField
-              fullWidth
-              label="Account Type"
-              onChange={(e) => setAccounttype(e.target.value)}
-
-              // error={Boolean(touched.lastName && errors.lastName)}
-              // helperText={touched.lastName && errors.lastName}
-            /> */}
           </Stack>
 
           <Box
