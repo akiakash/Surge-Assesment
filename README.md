@@ -14,7 +14,7 @@ password - @Akiakash1
 ! Kindly Request !
 *****open the project and there will be two folders 1.Server 2.Frontend , you have to run those two files in seperate terminals******
 ****** Run the frontend in localhost:3000 *********
-*****dont signup using same eail two times *********
+*****dont signup using same email two times *********
 
 !kindly apology!
 **if i have one more day i can complete the validations very well**
