@@ -2,7 +2,7 @@
 
 
 
--------------------if you wan to check the system without signup you can use these credentialas--------------------
+-------------------------------if you wan to check the system without signup you can use these credentialas------------------------------------------------
 For Admin
 email - imadeveloper12@gmail.com
 password - @Akiakash1
